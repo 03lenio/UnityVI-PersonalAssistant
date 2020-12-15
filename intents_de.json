@@ -1,0 +1,16 @@
+{"intents": [
+        {"tag": "greeting",
+         "patterns": ["Hi", "Wassup", "Jemand da?", "Hallo", "Guten Tag"],
+         "responses": ["Hi, schön das du da bist", "Schön dich zu sehen", "Hey, wie gehts?"],
+         "context_set": ""
+        },
+        {"tag": "goodbye",
+         "patterns": ["Bye", "Tschüss", "Wir sehen uns"],
+         "responses": ["Bis später, schön das du da warst", "Hab noch einen schönen Tag", "Bye."]
+        },
+        {"tag": "thanks",
+         "patterns": ["Danke", "Dank dir", "Das war nett"],
+         "responses": ["Kein ding!", "Immer doch!", "War mir ein vergnügen"]
+        }
+   ]
+}

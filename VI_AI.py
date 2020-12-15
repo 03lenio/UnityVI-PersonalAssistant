@@ -8,9 +8,25 @@ import tflearn
 import tensorflow as tf
 import random
 import json
+from python_json_config import ConfigBuilder
 
-with open('intents.json') as file:
-    data = json.load(file)
+# create config parser
+builder = ConfigBuilder()
+
+# parse config
+config = builder.parse_config('config.json')
+language = config.ai.language
+print(language)
+
+if language == "de":
+    with open('intents_de.json') as file:
+        data = json.load(file)
+elif language == "en":
+    with open('intents.json') as file:
+        data = json.load(file)
+else:
+    with open('intents.json') as file:
+        data = json.load(file)
 
 words = []
 labels = []
