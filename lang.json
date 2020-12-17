@@ -1,0 +1,10 @@
+{
+       "filler_words": ["for", "please", "me", "search", "at", "research", "to", "Hey", "Unity", "wikipedia", "search"],
+       "bye": ["Bye", "See you later", "Goodbye"],
+       "wikipedia": ["wikipedia"],
+       "google": ["google"],
+       "gmail": ["gmail", "email", "e-mail"],
+       "stadia": ["stadia"],
+       "clock": ["clock", "what time is it"],
+       "search": ["search"]
+}
