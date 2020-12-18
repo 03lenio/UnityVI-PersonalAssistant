@@ -1,10 +1,24 @@
 {
+       "intro": ["Ich bin Unity VI"],
+       "booting": ["Der Assistent fährt hoch"],
+       "good_morning": ["Guten Morgen schön dich zu sehen"],
+       "good_noon": ["Guten mittag"],
+       "good_evening": ["Guten abend"],
        "filler_words": ["nach", "bitte", "mir", "suche", "bei", "recherchiere", "zu", "Hey", "Unity",  "wikipedia", "search"],
        "bye": ["Bye", "Bis später", "ende"],
        "wikipedia": ["wikipedia"],
+       "searching_wiki": ["Suche bei wikipedia"],
+       "from_wiki": ["Nach wikipedia"],
+       "wiki_404": ["Nichts gefunden, sorry"],
        "google": ["google"],
+       "google_executed": ["google will be opened"],
        "gmail": ["gmail", "email", "e-mail"],
+       "gmail_executed": ["GMail wird aufgerufen"],
        "stadia": ["stadia"],
+       "stadia_executed": ["Stadia wird aufgerufen"],
        "clock": ["uhr"],
-       "search": ["suche"]
+       "clock_msg": ["Es ist"],
+       "search": ["suche"],
+       "shutdown": ["fahre herunter"]
+
 }

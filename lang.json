@@ -1,10 +1,23 @@
 {
-       "filler_words": ["for", "please", "me", "search", "at", "research", "to", "Hey", "Unity", "wikipedia", "search"],
+       "intro": ["I am Unity VI"],
+       "booting": ["assistant is booting up"],
+       "good_morning": ["good morning"],
+       "good_noon": ["good afternoon"],
+       "good_evening": ["good evening, nice to see you"],
+       "filler_words": ["for", "please", "me", "search", "at", "research", "to", "Hey", "Unity", "wikipedia", "search", "open", "execute"],
        "bye": ["Bye", "See you later", "Goodbye"],
        "wikipedia": ["wikipedia"],
+       "searching_wiki": ["searching wikipedia"],
+       "from_wiki": ["from wikipedia"],
+       "wiki_404": ["nothing found sorry"],
        "google": ["google"],
+       "google_executed": ["google will be opened"],
        "gmail": ["gmail", "email", "e-mail"],
+       "gmail_executed": ["gmail will be opened"],
        "stadia": ["stadia"],
        "clock": ["clock", "what time is it"],
-       "search": ["search"]
+       "stadia_executed": ["stadia will be opened"],
+       "clock_msg": ["It is"],
+       "search": ["search"],
+       "shutdown": ["shutting down"]
 }

@@ -45,14 +45,14 @@ def speak(text):
 def wishMe():
     hour = datetime.datetime.now().hour
     if 0 <= hour < 12:
-        speak("Hi ,Guten Morgen")
-        print("Hi ,Guten Morgen")
+        speak(lang_file.good_morning)
+
     elif 12 <= hour < 16:
-        speak("Guten Nachmittiag")
-        print("Guten Nachmittiag")
+        speak(lang_file.good_noon)
+
     else:
-        speak("Hi schön dich zu sehen, ich sehe dich zwar nich aber... ach egal guten abend")
-        print("Hi schön dich zu sehen, ich sehe dich zwar nich aber... ach egal guten abend")
+        speak(lang_file.good_evening)
+
 
 
 def takeCommand():
@@ -72,10 +72,10 @@ def takeCommand():
         return statement
 
 
-print("Loading your personal assistant Unity VI")
-speak("Der Assistent fährt hoch...")
+
+speak(lang_file.booting)
 time.sleep(3)
-speak("Ich bin Unity VI")
+speak(lang_file.intro)
 wishMe()
 print(lang_file.bye)
 if __name__ == '__main__':
@@ -89,52 +89,58 @@ if __name__ == '__main__':
         for word in lang_file.bye:
             if statement in word:
                 print(lang_file.bye)
-                speak('Der Assistent wird beendet,Man sieht sich')
-                print('your personal assistant Unity VI is shutting down,Good bye')
+                speak(lang_file.shutdown)
                 break
                 exit()
         for word in lang_file.wikipedia:
             if word in statement:
-                speak('Searching Wikipedia...')
+                speak(lang_file.searching_wiki)
                 results = ""
                 for word in filler_words:
                     if statement in word:
                         statement = statement.replace(word, "")
-                        print("Vlone:" + statement)
                 try:
                     wikipedia.set_lang(language)
                     print(statement)
                     results = wikipedia.summary(statement, sentences=3)
                 except:
                     print(language)
-                    print("Vone" + statement)
-                    speak("Nichts gefunden, sorry")
+                    speak(lang_file.wiki_404)
                     print("Unity understood: " + statement)
-                speak("Nach Wikipedia")
+                speak(lang_file.from_wiki)
                 print(results)
                 speak(results)
         for word in lang_file.google:
                 if statement in word:
+                    for wrd in filler_words:
+                        if statement in wrd:
+                            statement = statement.replace(wrd, "")
                     webbrowser.open_new_tab("https://www.google.com")
-                    speak("Google wird aufgerufen")
+                    speak(lang_file.google_executed)
                     time.sleep(5)
 
         for word in lang_file.gmail:
             if statement in word:
+                for wrd in filler_words:
+                    if statement in wrd:
+                        statement = statement.replace(wrd, "")
                 webbrowser.open_new_tab("gmail.com")
-                speak("GMail wird aufgerufen")
+                speak(lang_file.gmail_executed)
                 time.sleep(5)
 
         for word in lang_file.stadia:
             if statement in word:
+                for wrd in filler_words:
+                    if statement in wrd:
+                        statement = statement.replace(wrd, "")
                 webbrowser.open_new_tab("https://stadia.google.com/u/2/home")
-                speak("Stadia wird aufgerufen")
+                speak(lang_file.stadia_executed)
                 time.sleep(5)
 
         for word in lang_file.clock:
             if statement in word:
                 strTime = datetime.datetime.now().strftime("%H:%M")
-                speak(f"es ist gerade {strTime}")
+                speak(str(lang_file.clock_msg) + strTime)
 
         for word in lang_file.search:
            if word in statement:
