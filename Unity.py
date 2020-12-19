@@ -155,7 +155,7 @@ def comprehend():
               from VI_AI import chat
               chat()
               break
-        for word in lang_file.connect:
+        for word in lang_file.shutdown_command:
            if statement in word:
               exit()
               break
