@@ -18,7 +18,7 @@ if language == "de":
 elif language == "en":
     lang_file = builder.parse_config('lang.json')
 else:
-    lang_file = builder.parse_config('lang_de.json')
+    lang_file = builder.parse_config('lang.json')
 
 
 engine = pyttsx3.init('sapi5')
@@ -78,7 +78,7 @@ time.sleep(3)
 speak(lang_file.intro)
 wishMe()
 print(lang_file.bye)
-if __name__ == '__main__':
+def comprehend():
 
     while True:
 
@@ -149,3 +149,14 @@ if __name__ == '__main__':
                         statement = statement.replace(wrd, "")
                 webbrowser.open_new_tab(statement)
                 time.sleep(5)
+        for word in lang_file.connect:
+           if statement in word:
+              from VI_AI import chat
+              chat()
+              break
+        for word in lang_file.connect:
+           if statement in word:
+              exit()
+              break
+
+comprehend()

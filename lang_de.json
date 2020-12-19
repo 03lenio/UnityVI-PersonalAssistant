@@ -19,6 +19,10 @@
        "clock": ["uhr"],
        "clock_msg": ["Es ist"],
        "search": ["suche"],
-       "shutdown": ["fahre herunter"]
+       "shutdown": ["fahre herunter"],
+       "shutdown_command": ["beenden", "herunterfahren"],
+       "connect": ["chatbot", "smart mode", "ai"],
+       "chatbot_intro": ["Rede mit dem chatbot, sage stop um aufzuhören."],
+       "chatbot_quit": ["stopp"]
 
 }

@@ -19,5 +19,9 @@
        "stadia_executed": ["stadia will be opened"],
        "clock_msg": ["It is"],
        "search": ["search"],
-       "shutdown": ["shutting down"]
+       "shutdown": ["shutting down"],
+       "shutdown_command": ["shut down", "quit", "exit"],
+       "connect": ["chatbot", "smart mode", "ai"],
+       "chatbot_intro": ["Start talking with the bot, say quit to stop."],
+       "chatbot_quit": ["quit"]
 }

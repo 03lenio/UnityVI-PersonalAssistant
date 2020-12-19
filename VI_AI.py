@@ -1,4 +1,5 @@
 import nltk
+import pyttsx3
 from nltk.stem.lancaster import LancasterStemmer
 
 stemmer = LancasterStemmer()
@@ -8,6 +9,7 @@ import tflearn
 import tensorflow as tf
 import random
 import json
+import speech_recognition as sr
 from python_json_config import ConfigBuilder
 
 # create config parser
@@ -16,17 +18,57 @@ builder = ConfigBuilder()
 # parse config
 config = builder.parse_config('config.json')
 language = config.ai.language
+lang_file = 0
 print(language)
 
 if language == "de":
-    with open('intents_de.json') as file:
+    with open('intents_de.json', encoding="utf-8") as file:
         data = json.load(file)
+        lang_file = builder.parse_config('lang_de.json')
 elif language == "en":
     with open('intents.json') as file:
         data = json.load(file)
+        lang_file = builder.parse_config('lang.json')
 else:
     with open('intents.json') as file:
         data = json.load(file)
+        lang_file = builder.parse_config('lang.json')
+
+
+
+engine = pyttsx3.init('sapi5')
+voices = engine.getProperty('voices')
+engine.setProperty('voice', 'voices[0].id')
+
+if language == "de":
+    engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_DE-DE_ZIRA_11.0')
+elif language == "en":
+    engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0')
+else:
+    engine.setProperty('voice', 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0')
+
+
+def speak(text):
+    engine.say(text)
+    engine.runAndWait()
+
+
+def takeCommand():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Listening...")
+        audio = r.listen(source)
+
+        try:
+            r_language = language
+            statement = r.recognize_google(audio, language=r_language + "-" + r_language)
+            print(f"user said:{statement}\n")
+
+        except Exception as e:
+            # speak("Keine Ahnung was du meinst")
+            return "None"
+        return statement
+
 
 words = []
 labels = []
@@ -103,21 +145,27 @@ def bag_of_words(s, words):
 
 
 def chat():
-    print("Start talking with the bot (type quit to stop)!")
+    speak(lang_file.chatbot_intro)
     while True:
-        inp = input("You: ")
-        if inp.lower() == "quit":
+        inp = takeCommand()
+        if inp.lower() in lang_file.chatbot_quit:
+            print("this should break")
+            from Unity import comprehend
+            comprehend()
             break
 
-        results = model.predict([bag_of_words(inp, words)])
-        results_index = numpy.argmax(results)
-        tag = labels[results_index]
+        if inp != "None":
+            results = model.predict([bag_of_words(inp, words)])
+            results_index = numpy.argmax(results)
+            tag = labels[results_index]
 
-        for tg in data["intents"]:
-            if tg['tag'] == tag:
-                responses = tg['responses']
+            for tg in data["intents"]:
+                if tg['tag'] == tag:
+                    responses = tg['responses']
 
-        print(random.choice(responses))
+            print(random.choice(responses))
+            speak(random.choice(responses))
+
 
 
 chat()
